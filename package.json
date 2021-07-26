@@ -3,20 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^6.2.0",
     "@reduxjs/toolkit": "^1.5.1",
+    "@tailwindcss/forms": "^0.3.3",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "nanoid": "^3.1.23",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-icons": "^4.2.0",
     "react-redux": "^7.2.3",
     "react-scripts": "4.0.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -35,6 +38,9 @@
     ]
   },
   "devDependencies": {
-    "bootstrap": "^5.0.2"
+    "autoprefixer": "^9",
+    "bootstrap": "^5.0.2",
+    "postcss": "^7",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
   }
 }

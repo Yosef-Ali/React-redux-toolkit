@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { toggleCompleteAsync, deleteTodoAsync } from "../redux/todoSlice";
 
+import { FaRegTrashAlt } from "react-icons/fa";
+import { FiEdit } from "react-icons/fi";
+
 const TodoItem = ({ id, title, completed }) => {
   const dispatch = useDispatch();
-
   const handleCompletedClick = () => {
     dispatch(
       toggleCompleteAsync({
@@ -16,24 +18,38 @@ const TodoItem = ({ id, title, completed }) => {
   const handleDeleteClick = () => {
     dispatch(deleteTodoAsync({ id: id }));
   };
+
   return (
     <li
-      className={`list-group-item  ${completed && "list-group-item-success"}`}
+      className={`flex w-full border border-gray-300 px-5 py-5 rounded-lg shadow-sm hover:shadow-md delay-200 ${
+        completed && "bg-indigo-50"
+      }`}
     >
-      <div className="d-flex justify-content-between">
-        <span className="d-flex align-items-center ">
-          <input
-            type="checkbox"
-            className="form-check-input me-3"
-            checked={completed}
-            onClick={handleCompletedClick}
-          />
+      {/* flex w-full border border-gray-300 px-5 py-5 rounded-lg shadow-sm */}
+      <span className="flex mr-auto items-center justify-center">
+        <input
+          type="checkbox"
+          className="text-lg"
+          checked={completed}
+          onClick={handleCompletedClick}
+        />
+        <p
+          className={`leading-none text-lg ml-3 ${
+            completed && "text-indigo-600"
+          } `}
+        >
           {title}
-        </span>
-        <button className="btn btn-outline-danger" onClick={handleDeleteClick}>
-          Delete
-        </button>
-      </div>
+        </p>
+      </span>
+      <FiEdit
+        className="text-lg text-green-300 mr-3 hover:text-opacity-25 "
+        type="button"
+      />
+      <FaRegTrashAlt
+        className="text-red-600 text-lg hover:opacity-25"
+        type="button"
+        onClick={handleDeleteClick}
+      />
     </li>
   );
 };
